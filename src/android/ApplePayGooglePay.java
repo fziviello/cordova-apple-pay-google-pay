@@ -187,6 +187,18 @@ public class ApplePayGooglePay extends CordovaPlugin {
         }};
     }
 
+    private static JSONObject getGatewayTokenizationSpecificationStripe(String gateway, String gatewayMerchantId, String apiStripeVersion, String pkStripe) throws JSONException {
+        return new JSONObject() {{
+            put("type", "PAYMENT_GATEWAY");
+            put("parameters", new JSONObject() {{
+                put("gateway", gateway);
+                put("gatewayMerchantId", gatewayMerchantId);
+                put("stripe:version", apiStripeVersion);
+                put("stripe:publishableKey", pkStripe);
+            }});
+        }};
+    }
+
 
     /**
      * Describe your app's support for the CARD payment method.
